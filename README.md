@@ -1,8 +1,8 @@
-# Out of scope detection using a corpus of latent representation examples
+# Out of Scope Detection Using a Corpus of Latent Representation Examples
 
 This repo contains a python notebook of experiments investigating if by comparing the [simplex](https://proceedings.neurips.cc/paper/2021/file/65658fde58ab3c2b6e5132a39fae7cb9-Paper.pdf) approximations test time latent states to those of the validation set out-of-scope samples can be detected. The answer is yes!
 
-## The idea
+## The Idea
 
 At inference time an approximation of the final hidden layer classification token created either simplex (see [Explaining Latent Representations with a Corpus of Examples](https://arxiv.org/abs/2110.15355). The euclidean distance between this approximation and the real token is called the corpus residual and is used to evaluate if the sample is OOD. The intution being if the sample comes from the training distribiution (so is in scope) it's final latent state can be accurately approximated from the training corpus.
 
