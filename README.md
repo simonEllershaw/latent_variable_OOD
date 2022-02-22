@@ -16,7 +16,7 @@ By thresholding based on the 95% percentiles of the validation the following met
 | kNN             | 0.816     | 0.855  | 0.835 | 0.902 |
 | Simplex         | 0.814     | 0.892  | 0.851 | 0.929 |
 
-Full details of the approach are given in [paper.pdf](https://github.com/simonEllershaw/latent_variable_OOD/blob/main/OOS_Detection_using_Latent_States.pdf)
+Full details of the approach are given in [OOS_Detection_using_Latent_States.pdf](https://github.com/simonEllershaw/latent_variable_OOD/blob/main/OOS_Detection_using_Latent_States.pdf)
 
 ## To Run
 
