@@ -1,14 +1,14 @@
 # Out of Scope Detection Using a Corpus of Latent Representation Examples
 
-This repo contains a python notebook of experiments investigating if by comparing the [simplex](https://proceedings.neurips.cc/paper/2021/file/65658fde58ab3c2b6e5132a39fae7cb9-Paper.pdf) approximations test time latent states to those of the validation set out-of-scope samples can be detected. The answer is yes!
+This repo contains a python notebook of experiments investigating if by comparing the [simplex](https://proceedings.neurips.cc/paper/2021/file/65658fde58ab3c2b6e5132a39fae7cb9-Paper.pdf) approximations of test time latent states to those of the validation set, out-of-scope samples can be detected. The answer is yes!
 
 ## The Idea
 
-At inference time an approximation of the final hidden layer classification token created either simplex (see [Explaining Latent Representations with a Corpus of Examples](https://arxiv.org/abs/2110.15355). The euclidean distance between this approximation and the real token is called the corpus residual and is used to evaluate if the sample is OOD. The intution being if the sample comes from the training distribiution (so is in scope) it's final latent state can be accurately approximated from the training corpus.
+At inference time an approximation of the final hidden layer classification token is created using simplex (see [Explaining Latent Representations with a Corpus of Examples](https://arxiv.org/abs/2110.15355). The euclidean distance between this approximation and the real token is called the corpus residual and is used to evaluate if the sample is OOD. The intution being if the sample comes from the training distribiution (so is in scope) it's final latent state can be more accurately approximated from the training corpus.
 
 ![alt text](https://github.com/simonEllershaw/latent_variable_OOD/blob/main/figures/corpus_residuals.png)
 
-By thresholding based on the 95% percentiles of the validation the following metrics are acheived for OOD detection on the clinic150 dataset (compared to baseline max proabability and kNN methods):
+By thresholding based on the 95% percentiles of the validation set's corpus residuals, the following metrics are acheived for OOD detection on the clinic150 dataset (and compared to baseline max proabability and kNN methods):
 
 | Method          | Precision | Recall | F1    | AUC   |
 |-----------------|-----------|--------|-------|-------|
@@ -27,7 +27,7 @@ The clinic150 dataset needs to be download from [UCI](https://archive.ics.uci.ed
 If a GPU is not available the model weights for the transformer used for the in the report are available on [Google Drive](https://drive.google.com/file/d/1zO8r-P6CERgfr2f3eyawuhatArsuihU8/view?usp=sharing)
 
 ## Future Improvements
-This repo is a proof concept and so corners have been cut on some implementation. Below is a non-exhaustive list of implementation details that could/should be improved in the future
-- get_prob_pdf_has_greater_equal method is naively implemented and so v slow
+This repo is a proof concept and so corners have been cut on some implementation details. Below is a non-exhaustive list of to dos:
+- get_prob_pdf_has_greater_equal method is naively implemented and so v slow (but not actually required for method just visualisations)
 - Transformer training and OOD detection should be seperated out
 - Modularise simplex OOD dectection so easily extensible into any model framework (if it has linear last layer)
